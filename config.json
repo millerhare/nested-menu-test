@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Group",
+    "children": [
+      {
+        "name": "Company structure",
+        "content": "Company structure info..."
+      },
+      {
+        "name": "Awards",
+        "content": "Awards info..."
+      },
+      {
+        "name": "Why choose us",
+        "content": "Why choose us info..."
+      },
+      {
+        "name": "Our vision",
+        "content": "Our vision info..."
+      }
+    ]
+  },
+  {
+    "name": "The apartments",
+    "children": [
+      {
+        "name": "Building A",
+        "content": "Building A info..."
+      },
+      {
+        "name": "Building B",
+        "content": "Building B info..."
+      },
+      {
+        "name": "Building C",
+        "content": "Building C info..."
+      }
+    ]
+  },
+  {
+    "name": "Gallery",
+    "children": [
+      {
+        "name": "Building A",
+        "content": "Building A info..."
+      },
+      {
+        "name": "Building B",
+        "content": "Building B info..."
+      },
+      {
+        "name": "Building C",
+        "content": "Building C info..."
+      }
+    ]
+  }
+]
