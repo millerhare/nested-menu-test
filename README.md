@@ -1,5 +1,5 @@
 # nested-menu-test
-Create a small library for a nested tree menu from this [this json](config.json).
+Create a small library for a nested tree menu from [this json](config.json).
 
  * Nodes with children should expand/collapse when clicked
  * Clicking on a leaf node (a node with no children) should show the content (as defined in the json) in a right hand pane
