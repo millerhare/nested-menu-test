@@ -13,19 +13,27 @@ QUnit.test("test presence", function (assert) {
     assert.ok(loader);
 });
 
-QUnit.test("test get something's loaded", function (assert) {
-    assert.ok(loader('config.json'));
+QUnit.asyncTest("test get something's loaded", function (assert) {
+    loader('/config.json', function (loaded) {
+        assert.ok(loaded);
+        // Let qunit know the async tests are complete
+        QUnit.start();
+    });
 });
 
-QUnit.test("test loaded thing is correct", function (assert) {
-    var loaded = loader('config.json'),
-        expected_length = [4, 3, 3];
+QUnit.asyncTest("test loaded thing is correct", function (assert) {
+    var expected_length = [4, 3, 3];
 
-    assert.equal(loaded.length, 3);
-    
-    for (var parent = loaded.length - 1; parent >= 0; parent--) {
-        assert.equal(loaded[parent].length, expected_length[parent]);
-    }
+    loader('/config.json', function (loaded) {
+        console.log(loaded);
+        assert.equal(loaded.length, 3);
+
+        for (var parent = loaded.length - 1; parent >= 0; parent--) {
+            assert.equal(loaded[parent].children.length, expected_length[parent]);
+        }
+        // Let qunit know the async tests are complete
+        QUnit.start();
+    });
 });
 
 
