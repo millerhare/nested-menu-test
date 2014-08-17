@@ -4,59 +4,15 @@
     <title>Test bed for the nest menu</title>
 </head>
 <body>
-Hello, world!
+Hello, world! There should be a basic menu below me, click it and items should open.
 <div class="the-bar">
     
 </div>
 <ul>
-    <li id="foo_item" style="cursor:pointer;">
-        foo
-        <ul id="foo_menu" style="display:none;">
-            <li>foo</li>
-            <li>foo</li>
-            <li>foo</li>
-        </ul>
-    </li>
-    <li>
-        bar
-    </li>
-    <li id="baz_item">
-        baz
-        <ul id="baz_menu">
-            <li>baz</li>
-            <li>baz</li>
-            <li>baz</li>
-        </ul>
-    </li>
-</ul>
-    <script>
-    var foo = document.getElementById('foo_item');
-    foo.onclick = function() {
-        var foo_child = document.getElementById('foo_menu'),
-            status = window.getComputedStyle(foo_child, null).display;
-
-        console.log(status, foo, foo_child);
-        if (status === 'none') {
-            foo_child.style.display='block';
-        } else {
-            foo_child.style.display='none';
-        }
-    };
-    </script>
     <script src="/static/js/components/menu-bar.js"></script>
     <script src="/static/js/components/loader.js"></script>
     <script>
     menu_bar('.the-bar', 'config.json');
-    // menu_bar('.the-bar', [{
-    //     name: 'top',
-    //     content: 'bottom'
-    // }, {
-    //     name: 'Bob',
-    //     children: [
-    //         {name: 'alice', content: 'secret'},
-    //         {name: 'eve', content: 'secret'},
-    //     ]
-    // }]);
     </script>
 </body>
 </html>
