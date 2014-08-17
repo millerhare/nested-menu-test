@@ -9,8 +9,8 @@ QUnit.test("test presence", function (assert) {
 QUnit.test("test single node construction", function (assert) {
     menu_bar('#qunit-fixture', [{name: 'test', content:'foo'}]);
     // Should have one unordered list with one list item
-    assert.equal( $('ul').length, 1);
-    assert.equal( $('li').length, 1);
+    assert.equal( $('#qunit-fixture ul').length, 1);
+    assert.equal( $('#qunit-fixture li').length, 1);
 });
 
 QUnit.test("test child node construction", function (assert) {
@@ -22,8 +22,8 @@ QUnit.test("test child node construction", function (assert) {
 
     menu_bar('#qunit-fixture', config);
     // Should have one unordered list with one list item
-    assert.equal( $('ul').length, 1);
-    assert.equal( $('li').length, 2);
+    assert.equal( $('#qunit-fixture ul').length, 2);
+    assert.equal( $('#qunit-fixture li').length, 2);
 });
 
 QUnit.test("test click response", function (assert) {
@@ -39,22 +39,22 @@ QUnit.test("test click response", function (assert) {
     parent_item = $( '#menu-item--0' );
     assert.ok(parent_item);
     // root menu items should always be visible
-    assert.notEqual(parent_item.css('display'), 'hidden');
+    assert.notEqual(parent_item.css('display'), 'none');
 
     // Child items should be hidden until their parent is clicked
     child_menu = $( '#menu-0' );
-    assert.equal(child_menu.css('display'), 'hidden');
+    assert.equal(child_menu.css('display'), 'none');
     parent_item.trigger('click');
-    assert.notEqual(child_menu.css('display'), 'hidden');
+    assert.notEqual(child_menu.css('display'), 'none');
 
     // Now that the parent has been click the child items should also be visible
     child_item = $( '#menu-item-0-0' );
-    assert.notEqual(child_item.css('display'), 'hidden');
+    assert.notEqual(child_item.css('display'), 'none');
 
     // Child content should be hidden until the child is clicked
     child_item.trigger('click');
-    assert.Equal(child_content.css('display'), 'hidden');
+    assert.Equal(child_content.css('display'), 'none');
     child_content = $('#menu-content-0-0');
-    assert.notEqual(child_content.css('display'), 'hidden');
+    assert.notEqual(child_content.css('display'), 'none');
 
 });
