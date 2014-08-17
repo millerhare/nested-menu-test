@@ -29,7 +29,6 @@ QUnit.asyncTest("test loaded thing is correct", function (assert) {
     expect(child_lengths.length + 1);
 
     loader('/config.json', function (loaded) {
-        console.log(loaded);
         assert.equal(loaded.length, 3);
 
         for (var parent = loaded.length - 1; parent >= 0; parent--) {
