@@ -7,34 +7,55 @@
 menu_bar = function () {
     'use strict';
 
-    function _menuGenerator (parent, config, depth) {
-        var child_node, sub_node, item, depth_str,
+    function _menuGenerator (parent, config, depth_str) {
+        var child_node, sub_node, item, this_depth,
             len = config.length;
-        depth = depth + 1 || 0;
-        depth_str = depth.toString(10);
+        depth_str = depth_str || '';
 
         for (var i = 0; i < len; i++) {
+            this_depth = depth_str+'-'+i;
             item = config[i];
             child_node = document.createElement('li');
             child_node.innerHTML = item.name;
-            child_node.classList.add('menu__item--'+depth_str);
+            child_node.id = 'menu__item-' + this_depth;
+
+            console.log(i, depth_str +'-'+i);
 
             if (item.children) {
                 sub_node = document.createElement('ul');
-                _menuGenerator(sub_node, item.children, depth);
+                sub_node.id = 'menu-'+this_depth;
+                _menuGenerator(sub_node, item.children, this_depth);
             } else {
                 sub_node = document.createElement('span');
+                sub_node.id = 'menu__content-'+this_depth;
                 sub_node.innerHTML = item.content;
             }
-            child_node.appendChild(sub_node);
+            // Make sure everything starts off as hidden
+            sub_node.style.display = 'none';
+            // Set up the child node so when its clicked it makes the sub_node
+            // visible
+            child_node.onclick = _getToggleVisibilityFunction(sub_node);
 
+            child_node.appendChild(sub_node);
             parent.appendChild(child_node);
         }
     }
 
+    function _getToggleVisibilityFunction (elementToToggle) {
+        return function (event) {
+            event.stopPropagation();
+            var status = window.getComputedStyle(elementToToggle, null).display;
+            if (status === 'none') {    
+                elementToToggle.style.display = 'block';
+            } else {
+                elementToToggle.style.display = 'none';
+            }
+        };
+    }
+
     function _startIt (parentNode, configuration) {
         var topElement = document.createElement('ul');
-        topElement.classList.add('menu__root');
+        topElement.id = 'menu__root';
         parentNode.appendChild(topElement);
         _menuGenerator(topElement, configuration);
     }
