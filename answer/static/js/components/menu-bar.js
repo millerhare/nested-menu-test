@@ -7,7 +7,7 @@
 menu_bar = function () {
     'use strict';
 
-    function _menu_generator (parent, config, depth) {
+    function _menuGenerator (parent, config, depth) {
         var child_node, sub_node, item, depth_str,
             len = config.length;
         depth = depth + 1 || 0;
@@ -21,27 +21,26 @@ menu_bar = function () {
 
             if (item.children) {
                 sub_node = document.createElement('ul');
-                _menu_generator(sub_node, item.children, depth);
-                child_node.appendChild(sub_node);
+                _menuGenerator(sub_node, item.children, depth);
             } else {
                 sub_node = document.createElement('span');
                 sub_node.innerHTML = item.content;
-                child_node.appendChild(sub_node);
             }
+            child_node.appendChild(sub_node);
 
             parent.appendChild(child_node);
         }
     }
 
-    function _start_it (parentNode, configuration) {
+    function _startIt (parentNode, configuration) {
         var topElement = document.createElement('ul');
         topElement.classList.add('menu__root');
         parentNode.appendChild(topElement);
-        _menu_generator(topElement, configuration);
+        _menuGenerator(topElement, configuration);
     }
 
     // The top level function, checks the selector checks the configuration
-    function _menu_bar (parentSelector, configuration) {
+    function _menuBar (parentSelector, configuration) {
         var parentNode;
 
         // Approximation to CSS style selectors
@@ -66,12 +65,12 @@ menu_bar = function () {
         if (typeof configuration === 'string' && loader) {
             // if it's a string assume it's a path to a config and load it
             loader(configuration, function (loaded) {
-                _start_it(parentNode, loaded);
+                _startIt(parentNode, loaded);
             });
         } else {
-            _start_it(parentNode, configuration);
+            _startIt(parentNode, configuration);
         }
     }
 
-    return _menu_bar;
+    return _menuBar;
 }();
