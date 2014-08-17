@@ -5,5 +5,40 @@
 </head>
 <body>
 Hello, world!
+<ul>
+    <li id="foo_item" style="cursor:pointer;">
+        foo
+        <ul id="foo_menu" style="display:none;">
+            <li>foo</li>
+            <li>foo</li>
+            <li>foo</li>
+        </ul>
+    </li>
+    <li>
+        bar
+    </li>
+    <li id="baz_item">
+        baz
+        <ul id="baz_menu">
+            <li>baz</li>
+            <li>baz</li>
+            <li>baz</li>
+        </ul>
+    </li>
+</ul>
+    <script>
+    var foo = document.getElementById('foo_item');
+    foo.onclick = function() {
+        var foo_child = document.getElementById('foo_menu'),
+            status = window.getComputedStyle(foo_child, null).display;
+
+        console.log(status, foo, foo_child);
+        if (status === 'none') {
+            foo_child.style.display='block';
+        } else {
+            foo_child.style.display='none';
+        }
+    };
+    </script>
 </body>
 </html>
