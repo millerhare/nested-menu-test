@@ -5,6 +5,9 @@
 </head>
 <body>
 Hello, world!
+<div class="the-bar">
+    
+</div>
 <ul>
     <li id="foo_item" style="cursor:pointer;">
         foo
@@ -39,6 +42,19 @@ Hello, world!
             foo_child.style.display='none';
         }
     };
+    </script>
+    <script src="/static/js/components/menu-bar.js"></script>
+    <script>
+    menu_bar('.the-bar', [{
+        name: 'top',
+        content: 'bottom'
+    }, {
+        name: 'Bob',
+        children: [
+            {name: 'alice', content: 'secret'},
+            {name: 'eve', content: 'secret'},
+        ]
+    }]);
     </script>
 </body>
 </html>
