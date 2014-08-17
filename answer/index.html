@@ -44,17 +44,19 @@ Hello, world!
     };
     </script>
     <script src="/static/js/components/menu-bar.js"></script>
+    <script src="/static/js/components/loader.js"></script>
     <script>
-    menu_bar('.the-bar', [{
-        name: 'top',
-        content: 'bottom'
-    }, {
-        name: 'Bob',
-        children: [
-            {name: 'alice', content: 'secret'},
-            {name: 'eve', content: 'secret'},
-        ]
-    }]);
+    menu_bar('.the-bar', 'config.json');
+    // menu_bar('.the-bar', [{
+    //     name: 'top',
+    //     content: 'bottom'
+    // }, {
+    //     name: 'Bob',
+    //     children: [
+    //         {name: 'alice', content: 'secret'},
+    //         {name: 'eve', content: 'secret'},
+    //     ]
+    // }]);
     </script>
 </body>
 </html>

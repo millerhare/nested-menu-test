@@ -66,7 +66,7 @@ menu_bar = function () {
         if (typeof configuration === 'string' && loader) {
             // if it's a string assume it's a path to a config and load it
             loader(configuration, function (loaded) {
-                _start_it(parentNode, configuration);
+                _start_it(parentNode, loaded);
             });
         } else {
             _start_it(parentNode, configuration);
