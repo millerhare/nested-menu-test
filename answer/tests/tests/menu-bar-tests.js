@@ -36,25 +36,25 @@ QUnit.test("test click response", function (assert) {
 
     menu_bar('#qunit-fixture', config);
 
-    parent_item = $( '#menu-item--0' );
+    parent_item = $( '#menu__item--0' );
     assert.ok(parent_item);
     // root menu items should always be visible
     assert.notEqual(parent_item.css('display'), 'none');
 
     // Child items should be hidden until their parent is clicked
-    child_menu = $( '#menu-0' );
+    child_menu = $( '#menu--0' );
     assert.equal(child_menu.css('display'), 'none');
     parent_item.trigger('click');
     assert.notEqual(child_menu.css('display'), 'none');
 
     // Now that the parent has been click the child items should also be visible
-    child_item = $( '#menu-item-0-0' );
+    child_item = $( '#menu__item--0-0' );
     assert.notEqual(child_item.css('display'), 'none');
 
     // Child content should be hidden until the child is clicked
+    child_content = $('#menu__content--0-0');
+    assert.equal(child_content.css('display'), 'none');
     child_item.trigger('click');
-    assert.Equal(child_content.css('display'), 'none');
-    child_content = $('#menu-content-0-0');
     assert.notEqual(child_content.css('display'), 'none');
 
 });
